@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "./Button";
 import { Michroma } from "next/font/google";
+import { ArrowDown } from "lucide-react";
+import Link from "next/link";
 
 const michroma = Michroma({
   subsets: ["latin"],
@@ -12,89 +13,75 @@ const michroma = Michroma({
 
 export default function Hero() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black">
-      
+    <div className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center px-1 sm:px-4 py-12 sm:py-20">
+
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-40 scale-105 blur-[1px]"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
       >
         <source src="/arcavon.mp4" type="video/mp4" />
       </video>
 
-      {/* Sci-fi Scan Lines */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0)_0%,rgba(0,119,255,0.05)_50%,rgba(0,0,0,0)_100%)] bg-[length:100%_6px] opacity-50 z-10"></div>
-
-      {/* Top/Bottom Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black z-10"></div>
-
-      {/* Powerline Neon border */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-sm opacity-60"></div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
-        
-        {/* Hologram Title */}
+      <div className="relative z-20 flex flex-col items-center text-center max-w-4xl mx-auto">
+
+        {/* Title */}
         <motion.h1
-  initial={{ opacity: 0, y: 80, scale: 0.95 }}
-  animate={{ opacity: 1, y: 0, scale: 1 }}
-  transition={{ duration: 1.1, ease: "easeOut" }}
-  className={`text-6xl md:text-[8rem] font-black tracking-[0.3em] ${michroma.className} select-none`}
->
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0a7cff] to-[#00c2ff]">
-    ARCAVON
-  </span>
-</motion.h1>
-
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-xl md:text-3xl text-gray-300 tracking-[0.5em] mt-4 mb-12 uppercase"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black tracking-[0.05em] sm:tracking-[0.1em] ${michroma.className} select-none text-[#00c2ff] drop-shadow-[0_0_25px_rgba(0,194,255,0.6)]`}
         >
-          The Future of{" "}
-          <span className="text-cyan-300 font-bold drop-shadow-[0_0_12px_rgba(0,255,255,0.8)]">
-            Warfare
-          </span>{" "}
-          Begins
+          ARCAVON
+        </motion.h1>
+
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.15em] uppercase mt-4 sm:mt-6 md:mt-8 max-w-xl px-4"
+        >
+          Crafting Immersive Worlds, Powering the Future of Gaming
         </motion.p>
 
         {/* Buttons */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="flex flex-col md:flex-row gap-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 sm:mt-12 md:mt-16 w-full sm:w-auto px-4 sm:px-0"
         >
-          <Button
-            variant="hero"
-            onClick={() => console.log("Play Now")}
-          >
-            PLAY NOW
-          </Button>
+          <Link href="/services" className="w-full sm:w-auto">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff] bg-[#00c2ff] text-black font-bold tracking-widest hover:bg-[#00c2ff]/80 hover:shadow-[0_0_20px_rgba(0,194,255,0.4)] transition-all uppercase text-xs sm:text-sm md:text-base">
+              Explore Services
+            </button>
+          </Link>
 
-          <Button
-            variant="default"
-            onClick={() => console.log("Watch Trailer")}
-          >
-            WATCH TRAILER
-          </Button>
+          <Link href="/games" className="w-full sm:w-auto">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff]/50 text-[#00c2ff] font-bold tracking-widest hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] transition-all uppercase text-xs sm:text-sm md:text-base">
+              Explore Games
+            </button>
+          </Link>
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div
-        animate={{ y: [0, 14, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
+        className="absolute bottom-4 sm:bottom-16 md:bottom-20 z-20 text-[#00c2ff]"
       >
-        <div className="w-7 h-12 border-2 border-cyan-400 rounded-full flex justify-center p-1 shadow-[0_0_12px_rgba(0,255,255,0.6)]">
-          <div className="w-1 h-3 bg-cyan-300 rounded-full animate-ping"></div>
+        <div className="p-2 rounded-full border border-[#00c2ff]/30">
+          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6" />
         </div>
       </motion.div>
     </div>

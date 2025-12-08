@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Michroma } from "next/font/google";
-import Image from "next/image";
-import { Cpu, Rocket, HeartHandshake } from "lucide-react";
 
 const michroma = Michroma({
   subsets: ["latin"],
@@ -11,111 +9,36 @@ const michroma = Michroma({
   variable: "--font-michroma",
 });
 
-export default function AboutSection() {
+export default function AboutPage() {
   return (
-    <section
-      id="about"
-      className="relative w-full py-28 px-6 overflow-hidden bg-black text-gray-300"
-    >
-      {/* Hologram grid background */}
-      <div className="absolute inset-0 opacity-15 bg-[linear-gradient(90deg,rgba(0,255,255,0.15)_1px,transparent_1px),linear-gradient(0deg,rgba(0,255,255,0.15)_1px,transparent_1px)] bg-[size:45px_45px] pointer-events-none"></div>
-
-      {/* Central glowing aura */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,200,255,0.15),transparent_65%)] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-        
-        {/* TEXT SECTION */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
-          className="space-y-8"
+    <main className="min-h-screen bg-black pt-24 pb-16">
+      <section className="px-6 md:px-12 max-w-5xl mx-auto">
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className={`text-3xl md:text-5xl text-white font-bold tracking-wider mb-12 ${michroma.className}`}
         >
-          <h2
-            className={`text-4xl md:text-6xl text-white font-bold leading-tight tracking-widest ${michroma.className}`}
-          >
-            WE BUILD FUTURES
-            <br />
-            <span className="text-cyan-300 drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">
-              ONE WORLD AT A TIME
-            </span>
-          </h2>
+          About Us
+        </motion.h1>
 
-          <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
-            ARCAVON is a game development studio shaping bold new realities.
-            We create immersive combat universes powered by strategy, speed, and
-            cutting-edge storytelling. Every weapon, every battlefield, every
-            character is built with precision engineering and a whole lot of love.
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="space-y-10"
+        >
+          <p className="text-gray-300 leading-loose tracking-[0.15em] text-sm md:text-base uppercase font-medium">
+            Arcavon is a game-tech company focused on crafting immersive, story-driven games while building the technology and platforms that power the next generation of interactive experiences. From sci-fi worlds and AI-driven systems to robust backend and community tools, Arcavon sits at the intersection of gaming and technology.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-6 pt-6">
-
-            <Feature
-              icon={<Cpu className="w-10 h-10 text-cyan-400" />}
-              title="Innovation First"
-              desc="We push boundaries using advanced tech & gameplay engineering."
-            />
-
-            <Feature
-              icon={<Rocket className="w-10 h-10 text-cyan-400" />}
-              title="Built for Impact"
-              desc="Designed for intense combat, competitive play, and real emotion."
-            />
-
-            <Feature
-              icon={<HeartHandshake className="w-10 h-10 text-cyan-400" />}
-              title="Made With Love"
-              desc="We craft games that feel alive — because we care about the details."
-            />
-          </div>
+          <p className="text-gray-300 leading-loose tracking-[0.15em] text-sm md:text-base uppercase font-medium">
+            Beyond making games, Arcavon is building a dedicated community for game and game-dev enthusiasts—students, aspiring developers, designers, and artists—to learn, collaborate, and showcase their work. Through events, game jams, resources, and a growing platform, Arcavon aims to give the Indian gaming ecosystem the push it needs to compete on a global stage.
+          </p>
         </motion.div>
-
-        {/* IMAGE PANEL */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9 }}
-          viewport={{ once: true }}
-          className="relative flex justify-center"
-        >
-          <div className="relative rounded-xl overflow-hidden border border-cyan-500/30 shadow-[0_0_40px_rgba(0,200,255,0.3)] bg-black/40 backdrop-blur-xl p-4 group">
-            <Image
-              src="/wtf.png"
-              alt="Arcavon Team"
-              width={500}
-              height={500}
-              className="rounded-lg transition-transform duration-700 group-hover:scale-105"
-            />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className={`absolute bottom-4 left-1/2 -translate-x-1/2 text-cyan-300 text-3xl tracking-[0.3em] ${michroma.className}`}
-            >
-              ARCAVON
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
-
-interface FeatureProps {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}
-
-const Feature = ({ icon, title, desc }: FeatureProps) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-black/40 rounded-xl border border-cyan-500/20 shadow-[0_0_20px_rgba(0,255,255,0.15)] p-4 text-center transition"
-  >
-    <div className="flex justify-center mb-3">{icon}</div>
-    <h3 className="text-white font-bold text-sm tracking-wider mb-2">{title}</h3>
-    <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
-  </motion.div>
-);

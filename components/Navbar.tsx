@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Michroma } from "next/font/google";
+import { Menu, X } from "lucide-react";
 
 const michroma = Michroma({
   subsets: ["latin"],
@@ -13,6 +14,7 @@ const michroma = Michroma({
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const checkAdmin = async () => {
@@ -25,129 +27,87 @@ export default function Navbar() {
       }
     };
     checkAdmin();
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLogout = async () => {
-    await fetch("/api/auth/logout", { method: "POST" }); // Assuming logout route exists or will be created, otherwise just clear cookie client side if possible, but server side is better. 
-    // Wait, I don't have a logout route yet. I should probably create one or just redirect to login which might handle it? 
-    // For now, I'll just reload the page or redirect to home.
-    // Actually, the user didn't ask for logout, but it's good practice. I'll stick to just showing the Admin link for now as per plan, and maybe a simple logout that just refreshes.
-    // Let's just add the Admin link first.
-    window.location.href = "/";
-  };
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Our Services", href: "/services" },
+    { name: "Our Games", href: "/games" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+    { name: "Join Community", href: "/#community" },
+  ];
+
+  if (isAdmin) {
+    navLinks.push({ name: "Admin", href: "/admin/login" });
+  }
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#02070c]/80 backdrop-blur-xl text-white border-b border-blue-600/20 z-50 shadow-[0_0_25px_3px_rgba(0,120,255,0.15)]">
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/95 backdrop-blur-lg shadow-lg shadow-cyan-500/5" : "bg-black/70 backdrop-blur-md"} border-b border-white/10`}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-3 md:py-4 px-4 sm:px-6 lg:px-8">
 
         {/* Logo */}
-        <div
-          className={`flex items-center gap-3 text-2xl tracking-widest cursor-pointer select-none ${michroma.className} relative`}
-        >
-          <Image
-            src="/wtf.png"
-            alt="Arcavon Logo"
-            width={55}
-            height={55}
-            priority
-            className="drop-shadow-[0_0_10px_rgba(0,140,255,0.6)]"
-          />
-          <span className="text-blue-300 hover:text-blue-400 transition duration-300 relative overflow-hidden group">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-110">
+            <Image
+              src="/arcavon_logo.png"
+              alt="Arcavon Logo"
+              fill
+              className="object-contain drop-shadow-[0_0_10px_rgba(0,194,255,0.6)]"
+              priority
+            />
+          </div>
+          <span className={`text-base sm:text-lg md:text-xl tracking-[0.15em] sm:tracking-[0.2em] text-white font-bold ${michroma.className} group-hover:text-cyan-300 transition-colors duration-300`}>
             ARCAVON
-            <span className="absolute inset-x-0 bottom-0 h-[2px] bg-blue-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {[
-            { name: "Home", href: "/" },
-            { name: "Characters", href: "/#characters" },
-            { name: "Weapons", href: "/#weapons" },
-            { name: "Maps", href: "/#maps" },
-            { name: "News", href: "/news" },
-            { name: "About", href: "/about" },
-            { name: "Feedback", href: "/feedback" },
-          ].concat(isAdmin ? [{ name: "Admin", href: "/admin/login" }] : []).map((link) => (
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-gray-300 relative transition-all duration-300 hover:text-blue-400 hover:drop-shadow-[0_0_6px_rgba(0,160,255,1)] group"
+              className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 tracking-wider uppercase whitespace-nowrap group"
             >
               {link.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
-          {isAdmin && (
-            <button
-              onClick={handleLogout}
-              className="text-red-400 hover:text-red-300 transition font-medium ml-4"
-            >
-              Logout
-            </button>
-          )}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-blue-400 hover:text-blue-300 transition"
+          className="lg:hidden text-white hover:text-cyan-400 transition-colors duration-300 p-2"
           onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d={
-                open
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M3.75 6h16.5M3.75 12h16.5m-16.5 6h16.5"
-              }
-            />
-          </svg>
+          {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
         </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
-      {open && (
-        <div className="md:hidden flex flex-col bg-[#02070c]/95 border-t border-blue-600/30 backdrop-blur-xl px-6 pb-4 gap-4 text-sm animate-slideDown">
-          {[
-            { name: "Home", href: "/" },
-            { name: "Characters", href: "/#characters" },
-            { name: "Weapons", href: "/#weapons" },
-            { name: "Maps", href: "/#maps" },
-            { name: "Community", href: "/community" },
-            { name: "About", href: "/about" },
-            { name: "Feedback", href: "/feedback" },
-          ].concat(isAdmin ? [{ name: "Admin", href: "/admin/login" }] : []).map((link) => (
+      <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="flex flex-col bg-black/95 border-t border-white/10 backdrop-blur-xl px-6 py-6 gap-1">
+          {navLinks.map((link, index) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-gray-300 hover:text-blue-400 transition"
+              className="text-base text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all duration-300 uppercase tracking-widest py-3 px-4 rounded-lg border-l-2 border-transparent hover:border-cyan-400"
               onClick={() => setOpen(false)}
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               {link.name}
             </Link>
           ))}
-          {isAdmin && (
-            <button
-              onClick={() => {
-                handleLogout();
-                setOpen(false);
-              }}
-              className="text-red-400 hover:text-red-300 transition text-left"
-            >
-              Logout
-            </button>
-          )}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
