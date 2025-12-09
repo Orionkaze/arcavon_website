@@ -63,7 +63,7 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className={`text-base sm:text-lg md:text-xl tracking-[0.15em] sm:tracking-[0.2em] text-white font-bold ${michroma.className} group-hover:text-cyan-300 transition-colors duration-300`}>
+          <span className={`text-base sm:text-lg md:text-xl tracking-[0.15em] sm:tracking-[0.2em] text-white font-[family-name:var(--font-chakra)] font-bold group-hover:text-cyan-300 transition-colors duration-300`}>
             ARCAVON
           </span>
         </Link>

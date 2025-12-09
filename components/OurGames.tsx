@@ -33,7 +33,7 @@ export default function OurGames() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00c2ff] to-[#0a7cff] tracking-widest text-center ${michroma.className} drop-shadow-[0_0_30px_rgba(0,194,255,0.4)] animate-pulse font-[family-name:var(--font-chakra)]`}
+                        className={`text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00c2ff] to-[#0a7cff] tracking-widest text-center  drop-shadow-[0_0_30px_rgba(0,194,255,0.4)] animate-pulse font-[family-name:var(--font-chakra)]`}
                     >
                         COMING SOON !!
                     </motion.h3>

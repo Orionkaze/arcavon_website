@@ -41,7 +41,7 @@ export default function WhoWeAre() {
         {/* Header */}
         <div className="mb-16 md:mb-20">
           <div className="flex justify-between items-start mb-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight uppercase font-[family-name:var(--font-hanuman)]">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold tracking-tight uppercase font-[family-name:var(--font-hanuman)]">
               Who We Are
             </h2>
             <a
@@ -60,10 +60,10 @@ export default function WhoWeAre() {
           {/* Left Column - Text & Stats */}
           <div className="space-y-8">
             <div className="bg-gradient-to-br from-[#0f0f0f] to-black p-8 md:p-10 rounded-xl border border-[#00c2ff]/20 hover:border-[#00c2ff]/40 transition-all duration-300">
-              <p className="text-gray-400 leading-relaxed text-base md:text-lg uppercase tracking-wider mb-6">
+              <p className="text-gray-400 leading-relaxed text-base md:text-lg tracking-wider mb-6 font-[family-name:var(--font-inter)]">
                 Arcavon is a game-tech company building high-quality, story-driven games and tools from India for the world.
               </p>
-              <p className="text-gray-400 leading-relaxed text-base md:text-lg uppercase tracking-wider">
+              <p className="text-gray-400 leading-relaxed text-base md:text-lg tracking-wider font-[family-name:var(--font-inter)]">
                 We blend cutting-edge technology, gameplay, and community to create experiences where players and creators grow together.
               </p>
             </div>
@@ -75,12 +75,11 @@ export default function WhoWeAre() {
                   key={index}
                   className="bg-gradient-to-br from-[#0f0f0f] to-black p-4 md:p-6 rounded-xl border border-white/10 hover:border-[#00c2ff]/40 transition-all duration-300 group text-center relative overflow-hidden"
                 >
-
                   <div className="relative">
                     <div className="text-2xl md:text-3xl font-bold text-[#00c2ff] mb-1 group-hover:scale-110 transition-transform font-[family-name:var(--font-chakra)]">
                       {stat.number}
                     </div>
-                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest">
+                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-[family-name:var(--font-inter)]">
                       {stat.label}
                     </div>
                   </div>
@@ -108,9 +107,6 @@ export default function WhoWeAre() {
             </div>
           </div>
         </div>
-
-
-
       </div>
     </section>
   );

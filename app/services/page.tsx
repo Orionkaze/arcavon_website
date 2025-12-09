@@ -1,7 +1,7 @@
 "use client";
 
 import { JSX, useState } from "react";
-import { Palette, Play, Bug, Check, ChevronDown, ArrowRight, Sparkles, Send } from "lucide-react";
+import { Palette, Play, Bug, Check, ChevronDown, ArrowRight, Sparkles, Send, Plus } from "lucide-react";
 
 export default function ServicesPage() {
   const [formData, setFormData] = useState({
@@ -101,14 +101,11 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20">
         <div className="space-y-8 mb-16">
-          <div className="flex items-center gap-4 mb-6">
-            <Sparkles className="w-8 h-8 text-[#00c2ff]" />
-            <span className="text-[#00c2ff] uppercase tracking-widest text-sm font-semibold font-[family-name:var(--font-chakra)]">Our Services</span>
-          </div>
+  
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight uppercase font-[family-name:var(--font-hanuman)]">
             What We Offer
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed uppercase tracking-wider max-w-3xl font-[family-name:var(--font-inter)]">
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed  tracking-wider max-w-3xl font-[family-name:var(--font-inter)]">
             Professional game development services to bring your ideas to life
           </p>
         </div>
@@ -128,7 +125,7 @@ export default function ServicesPage() {
 
               <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-wide font-[family-name:var(--font-hanuman)]">{service.title}</h3>
 
-              <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider leading-relaxed font-[family-name:var(--font-inter)]">
+              <p className="text-gray-500 text-sm mb-6  tracking-wider leading-relaxed font-[family-name:var(--font-inter)]">
                 {service.description}
               </p>
 
@@ -141,10 +138,10 @@ export default function ServicesPage() {
                 ))}
               </div>
 
-              <button className="flex items-center gap-2 text-[#00c2ff] text-sm font-semibold uppercase tracking-wider group-hover:gap-3 transition-all font-[family-name:var(--font-chakra)]">
-                Learn More
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2 text-[#00c2ff] text-sm font-semibold uppercase tracking-wider group-hover:gap-3 transition-all font-[family-name:var(--font-chakra)]">
+                <span>and More</span>
+                <Plus className="w-4 h-4" />
+              </div>
             </div>
           ))}
         </div>

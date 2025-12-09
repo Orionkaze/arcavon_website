@@ -6,18 +6,9 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center px-1 sm:px-4 py-12 sm:py-20">
+    <div className="relative min-h-[70vh] sm:min-h-screen w-full overflow-hidden bg-black flex flex-col items-center justify-center px-1 sm:px-4 py-12 sm:py-20">
 
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
-      >
-        <source src="/arcavon.mp4" type="video/mp4" />
-      </video>
+
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 z-10"></div>
@@ -30,7 +21,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black tracking-[0.05em] sm:tracking-[0.1em] font-[family-name:var(--font-hanuman)] select-none text-[#00c2ff] drop-shadow-[0_0_25px_rgba(0,194,255,0.6)]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black tracking-[0.05em] sm:tracking-[0.1em] font-[family-name:var(--font-chakra)] select-none text-[#00c2ff] drop-shadow-[0_0_25px_rgba(0,194,255,0.6)]"
         >
           ARCAVON
         </motion.h1>
