@@ -1,13 +1,6 @@
 "use client";
 
 import React from "react";
-import { Michroma } from "next/font/google";
-
-const michroma = Michroma({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-michroma",
-});
 
 const Button = ({ children, onClick, variant = "default" }: { children: React.ReactNode; onClick?: () => void; variant?: "default" | "hero" }) => {
   const variants = {
@@ -20,7 +13,7 @@ const Button = ({ children, onClick, variant = "default" }: { children: React.Re
   return (
     <button
       onClick={onClick}
-      className={`relative inline-flex h-14 overflow-hidden rounded-xl px-[3px] py-[3px] group active:scale-[0.97] transition-transform ${michroma.className}`}
+      className={`relative inline-flex h-14 overflow-hidden rounded-xl px-[3px] py-[3px] group active:scale-[0.97] transition-transform font-[family-name:var(--font-bunken)]`}
     >
       {/* Animated Circuit Border */}
       <span className="absolute inset-0 rounded-xl bg-[conic-gradient(from_180deg_at_50%_50%,#00d9ff_0%,#005eff_25%,#00faff_50%,#005eff_75%,#00d9ff_100%)] opacity-70 blur-sm animate-[spin_6s_linear_infinite] pointer-events-none" />

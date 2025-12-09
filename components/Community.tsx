@@ -22,7 +22,7 @@ export default function Community() {
                     <p className="text-gray-400 text-sm md:text-base tracking-wide max-w-md">
                         A Social Space for Players, Creators & Developers.
                     </p>
-                    <p className="text-[#00c2ff] text-xl font-bold tracking-widest mt-4 animate-pulse">
+                    <p className="text-[#00c2ff] text-xl font-bold tracking-widest mt-4 animate-pulse font-[family-name:var(--font-chakra)]">
                         COMING SOON !!
                     </p>
                 </div>
@@ -31,7 +31,7 @@ export default function Community() {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 border border-[#00c2ff]/50 rounded-md text-[#00c2ff] font-bold tracking-[0.2em] hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.3)] transition-all uppercase"
+                    className="px-8 py-4 border border-[#00c2ff]/50 rounded-md text-[#00c2ff] font-bold tracking-[0.2em] hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.3)] transition-all uppercase font-[family-name:var(--font-bunken)]"
                 >
                     Get Early Access
                 </motion.button>

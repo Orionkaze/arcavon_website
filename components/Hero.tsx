@@ -1,15 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Michroma } from "next/font/google";
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
-
-const michroma = Michroma({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-michroma",
-});
 
 export default function Hero() {
   return (
@@ -37,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black tracking-[0.05em] sm:tracking-[0.1em] ${michroma.className} select-none text-[#00c2ff] drop-shadow-[0_0_25px_rgba(0,194,255,0.6)]`}
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-black tracking-[0.05em] sm:tracking-[0.1em] font-[family-name:var(--font-hanuman)] select-none text-[#00c2ff] drop-shadow-[0_0_25px_rgba(0,194,255,0.6)]"
         >
           ARCAVON
         </motion.h1>
@@ -47,9 +40,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.15em] uppercase mt-4 sm:mt-6 md:mt-8 max-w-xl px-4"
+          className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.15em] uppercase mt-4 sm:mt-6 md:mt-8 max-w-xl px-4 font-[family-name:var(--font-inter)]"
         >
-          Crafting Immersive Worlds, Powering the Future of Gaming
+          Beyond games. Building worlds and community.
         </motion.p>
 
         {/* Buttons */}
@@ -60,13 +53,13 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 sm:mt-12 md:mt-16 w-full sm:w-auto px-4 sm:px-0"
         >
           <Link href="/services" className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff] bg-[#00c2ff] text-black font-bold tracking-widest hover:bg-[#00c2ff]/80 hover:shadow-[0_0_20px_rgba(0,194,255,0.4)] transition-all uppercase text-xs sm:text-sm md:text-base">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff] bg-[#00c2ff] text-black font-bold tracking-widest hover:bg-[#00c2ff]/80 hover:shadow-[0_0_20px_rgba(0,194,255,0.4)] transition-all uppercase text-xs sm:text-sm md:text-base font-[family-name:var(--font-bunken)]">
               Explore Services
             </button>
           </Link>
 
           <Link href="/games" className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff]/50 text-[#00c2ff] font-bold tracking-widest hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] transition-all uppercase text-xs sm:text-sm md:text-base">
+            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-[#00c2ff]/50 text-[#00c2ff] font-bold tracking-widest hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] transition-all uppercase text-xs sm:text-sm md:text-base font-[family-name:var(--font-bunken)]">
               Explore Games
             </button>
           </Link>

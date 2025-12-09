@@ -18,10 +18,10 @@ export default function OurGames() {
 
                 {/* Header */}
                 <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-24">
-                    <h2 className={`text-3xl md:text-4xl text-white font-bold tracking-wider ${michroma.className}`}>
+                    <h2 className={`text-3xl md:text-4xl text-white font-bold tracking-wider font-[family-name:var(--font-hanuman)]`}>
                         Our Games
                     </h2>
-                    <Link href="/games" className="text-[#00c2ff] text-xs md:text-sm flex items-center gap-2 hover:gap-3 transition-all uppercase tracking-widest">
+                    <Link href="/games" className="text-[#00c2ff] text-xs md:text-sm flex items-center gap-2 hover:gap-3 transition-all uppercase tracking-widest font-[family-name:var(--font-chakra)]">
                         View More <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
@@ -33,7 +33,7 @@ export default function OurGames() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className={`text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00c2ff] to-[#0a7cff] tracking-widest text-center ${michroma.className} drop-shadow-[0_0_30px_rgba(0,194,255,0.4)]`}
+                        className={`text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00c2ff] to-[#0a7cff] tracking-widest text-center ${michroma.className} drop-shadow-[0_0_30px_rgba(0,194,255,0.4)] animate-pulse font-[family-name:var(--font-chakra)]`}
                     >
                         COMING SOON !!
                     </motion.h3>

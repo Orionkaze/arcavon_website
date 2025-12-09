@@ -36,24 +36,24 @@ export default function ServicesPage() {
     },
   ];
 
-interface Service {
+  interface Service {
     icon: JSX.Element;
     title: string;
     features: string[];
     description: string;
-}
+  }
 
-interface FormData {
+  interface FormData {
     service: string;
     name: string;
     email: string;
     message: string;
-}
+  }
 
-const handleChange = (field: keyof FormData, value: string) => {
+  const handleChange = (field: keyof FormData, value: string) => {
     setFormData({ ...formData, [field]: value });
     setError("");
-};
+  };
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -61,8 +61,20 @@ const handleChange = (field: keyof FormData, value: string) => {
     setError("");
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log("Form submitted:", formData);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to send message.");
+      }
+
       setSubmitted(true);
 
       setTimeout(() => {
@@ -72,8 +84,10 @@ const handleChange = (field: keyof FormData, value: string) => {
 
     } catch (err) {
       console.error("Contact form error:", err);
-      if (err && typeof err === "object" && "message" in err && typeof (err as any).message === "string") {
-        setError((err as { message: string }).message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else if (err && typeof err === "object" && "message" in err) {
+        setError(String((err as { message: unknown }).message));
       } else {
         setError("Something went wrong. Please try again.");
       }
@@ -89,12 +103,12 @@ const handleChange = (field: keyof FormData, value: string) => {
         <div className="space-y-8 mb-16">
           <div className="flex items-center gap-4 mb-6">
             <Sparkles className="w-8 h-8 text-[#00c2ff]" />
-            <span className="text-[#00c2ff] uppercase tracking-widest text-sm font-semibold">Our Services</span>
+            <span className="text-[#00c2ff] uppercase tracking-widest text-sm font-semibold font-[family-name:var(--font-chakra)]">Our Services</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight uppercase">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight uppercase font-[family-name:var(--font-hanuman)]">
             What We Offer
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed uppercase tracking-wider max-w-3xl">
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed uppercase tracking-wider max-w-3xl font-[family-name:var(--font-inter)]">
             Professional game development services to bring your ideas to life
           </p>
         </div>
@@ -104,7 +118,7 @@ const handleChange = (field: keyof FormData, value: string) => {
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
               className="bg-gradient-to-br from-[#0f0f0f] to-black p-8 rounded-xl border border-white/10 hover:border-[#00c2ff]/40 transition-all duration-300 group"
             >
@@ -112,9 +126,9 @@ const handleChange = (field: keyof FormData, value: string) => {
                 {service.icon}
               </div>
 
-              <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-wide">{service.title}</h3>
-              
-              <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider leading-relaxed">
+              <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-wide font-[family-name:var(--font-hanuman)]">{service.title}</h3>
+
+              <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider leading-relaxed font-[family-name:var(--font-inter)]">
                 {service.description}
               </p>
 
@@ -122,12 +136,12 @@ const handleChange = (field: keyof FormData, value: string) => {
                 {service.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#00c2ff] flex-shrink-0" />
-                    <span className="text-gray-400 text-sm uppercase tracking-wider">{feature}</span>
+                    <span className="text-gray-400 text-sm uppercase tracking-wider font-[family-name:var(--font-inter)]">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <button className="flex items-center gap-2 text-[#00c2ff] text-sm font-semibold uppercase tracking-wider group-hover:gap-3 transition-all">
+              <button className="flex items-center gap-2 text-[#00c2ff] text-sm font-semibold uppercase tracking-wider group-hover:gap-3 transition-all font-[family-name:var(--font-chakra)]">
                 Learn More
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -139,10 +153,10 @@ const handleChange = (field: keyof FormData, value: string) => {
       {/* Contact Form Section */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 uppercase tracking-wider">
+          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 uppercase tracking-wider font-[family-name:var(--font-hanuman)]">
             Let's Work Together
           </h2>
-          <p className="text-lg text-gray-400 uppercase tracking-wider">
+          <p className="text-lg text-gray-400 uppercase tracking-wider font-[family-name:var(--font-inter)]">
             Ready to start your project? Get in touch with us
           </p>
         </div>
@@ -151,21 +165,21 @@ const handleChange = (field: keyof FormData, value: string) => {
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#00c2ff] to-purple-500 rounded-2xl blur opacity-20"></div>
             <div className="relative bg-gradient-to-b from-[#0f0f0f] to-black p-8 md:p-10 rounded-2xl border border-[#00c2ff]/30 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-              <h3 className="text-2xl text-white font-bold mb-6">
+              <h3 className="text-2xl text-white font-bold mb-6 font-[family-name:var(--font-hanuman)]">
                 Send us a Message
               </h3>
-              
+
               <div className="space-y-5">
                 {/* Service Dropdown */}
                 <div>
-                  <label className="block text-gray-400 text-sm font-medium mb-2">
+                  <label className="block text-gray-400 text-sm font-medium mb-2 font-[family-name:var(--font-inter)]">
                     Service
                   </label>
                   <div className="relative">
                     <button
                       type="button"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none hover:border-[#00c2ff] focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all text-left flex items-center justify-between"
+                      className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none hover:border-[#00c2ff] focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all text-left flex items-center justify-between font-[family-name:var(--font-inter)]"
                     >
                       <span>{formData.service}</span>
                       <ChevronDown className={`w-5 h-5 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
@@ -180,11 +194,10 @@ const handleChange = (field: keyof FormData, value: string) => {
                               handleChange("service", service);
                               setDropdownOpen(false);
                             }}
-                            className={`w-full px-5 py-3 text-left transition-all ${
-                              formData.service === service
-                                ? "bg-[#00c2ff] text-black font-semibold"
-                                : "text-gray-300 hover:bg-[#00c2ff]/20 hover:text-white"
-                            }`}
+                            className={`w-full px-5 py-3 text-left transition-all font-[family-name:var(--font-inter)] ${formData.service === service
+                              ? "bg-[#00c2ff] text-black font-semibold"
+                              : "text-gray-300 hover:bg-[#00c2ff]/20 hover:text-white"
+                              }`}
                           >
                             {service}
                           </button>
@@ -196,7 +209,7 @@ const handleChange = (field: keyof FormData, value: string) => {
 
                 {/* Name Input */}
                 <div>
-                  <label className="block text-gray-400 text-sm font-medium mb-2">
+                  <label className="block text-gray-400 text-sm font-medium mb-2 font-[family-name:var(--font-inter)]">
                     Name
                   </label>
                   <input
@@ -205,13 +218,13 @@ const handleChange = (field: keyof FormData, value: string) => {
                     value={formData.name}
                     onChange={(e) => handleChange("name", e.target.value)}
                     required
-                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600"
+                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600 font-[family-name:var(--font-inter)]"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label className="block text-gray-400 text-sm font-medium mb-2">
+                  <label className="block text-gray-400 text-sm font-medium mb-2 font-[family-name:var(--font-inter)]">
                     Email
                   </label>
                   <input
@@ -220,13 +233,13 @@ const handleChange = (field: keyof FormData, value: string) => {
                     value={formData.email}
                     onChange={(e) => handleChange("email", e.target.value)}
                     required
-                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600"
+                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600 font-[family-name:var(--font-inter)]"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label className="block text-gray-400 text-sm font-medium mb-2">
+                  <label className="block text-gray-400 text-sm font-medium mb-2 font-[family-name:var(--font-inter)]">
                     Message
                   </label>
                   <textarea
@@ -235,7 +248,7 @@ const handleChange = (field: keyof FormData, value: string) => {
                     onChange={(e) => handleChange("message", e.target.value)}
                     rows={5}
                     required
-                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600 resize-none"
+                    className="w-full px-5 py-3.5 bg-black/50 text-white border border-white/20 rounded-lg outline-none focus:border-[#00c2ff] focus:shadow-[0_0_10px_rgba(0,194,255,0.2)] transition-all placeholder:text-gray-600 resize-none font-[family-name:var(--font-inter)]"
                   />
                 </div>
 
@@ -245,11 +258,10 @@ const handleChange = (field: keyof FormData, value: string) => {
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting || submitted}
-                    className={`w-full px-6 py-4 rounded-lg font-semibold tracking-wide transition-all flex items-center justify-center gap-2 ${
-                      submitted
-                        ? "bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.4)]"
-                        : "bg-[#00c2ff] text-black hover:shadow-[0_0_25px_rgba(0,194,255,0.5)] hover:scale-[1.02] active:scale-[0.98]"
-                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                    className={`w-full px-6 py-4 rounded-lg font-semibold tracking-wide transition-all flex items-center justify-center gap-2 font-[family-name:var(--font-bunken)] ${submitted
+                      ? "bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                      : "bg-[#00c2ff] text-black hover:shadow-[0_0_25px_rgba(0,194,255,0.5)] hover:scale-[1.02] active:scale-[0.98]"
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     {isSubmitting ? (
                       <>
@@ -273,7 +285,7 @@ const handleChange = (field: keyof FormData, value: string) => {
 
                   {error && (
                     <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg">
-                      <p className="text-red-400 text-sm text-center">{error}</p>
+                      <p className="text-red-400 text-sm text-center font-[family-name:var(--font-inter)]">{error}</p>
                     </div>
                   )}
                 </div>

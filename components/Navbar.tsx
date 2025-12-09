@@ -74,7 +74,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 tracking-wider uppercase whitespace-nowrap group"
+              className="relative text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 tracking-wider uppercase whitespace-nowrap group font-[family-name:var(--font-inter)]"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
@@ -99,7 +99,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-base text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all duration-300 uppercase tracking-widest py-3 px-4 rounded-lg border-l-2 border-transparent hover:border-cyan-400"
+              className="text-base text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all duration-300 uppercase tracking-widest py-3 px-4 rounded-lg border-l-2 border-transparent hover:border-cyan-400 font-[family-name:var(--font-inter)]"
               onClick={() => setOpen(false)}
               style={{ animationDelay: `${index * 50}ms` }}
             >

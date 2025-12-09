@@ -18,31 +18,32 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
 
         {/* Social Icons */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ">
 
           {/* Instagram */}
-          <Link href="#" className="text-white hover:text-[#E4405F] transition-colors duration-300">
-            <FontAwesomeIcon icon={faInstagram} className="w-10 h-10" />
+          <Link href="https://www.instagram.com/arcavon.official/
+" className="text-white hover:text-[#E4405F] transition-colors duration-300">
+            <FontAwesomeIcon icon={faInstagram} className="w-12 h-12 md:w-16 md:h-16" />
           </Link>
 
-          {/* X / Twitter - Square version isn't separate; this is the official FA brand icon */}
-          <Link href="#" className="text-white hover:text-gray-400 transition-colors duration-300">
-            <FontAwesomeIcon icon={faXTwitter} className="w-10 h-10" />
+          {/* X / Twitter */}
+          <Link href="https://x.com/arcavonofficial" className="text-white hover:text-gray-400 transition-colors duration-300">
+            <FontAwesomeIcon icon={faXTwitter} className="w-12 h-12 md:w-16 md:h-16" />
           </Link>
 
           {/* YouTube */}
-          <Link href="#" className="text-white hover:text-[#FF0000] transition-colors duration-300">
-            <FontAwesomeIcon icon={faYoutube} className="w-10 h-10" />
+          <Link href="https://www.youtube.com/@arcavon-official " className="text-white hover:text-[#FF0000] transition-colors duration-300">
+            <FontAwesomeIcon icon={faYoutube} className="w-12 h-12 md:w-16 md:h-16" />
           </Link>
 
-          {/* LinkedIn - Square brand icon */}
-          <Link href="#" className="text-white hover:text-[#0A66C2] transition-colors duration-300">
-            <FontAwesomeIcon icon={faLinkedin} className="w-1 h-10" />
+          {/* LinkedIn */}
+          <Link href="https://www.linkedin.com/company/arcavon/" className="text-white hover:text-[#0A66C2] transition-colors duration-300">
+            <FontAwesomeIcon icon={faLinkedin} className="w-12 h-12 md:w-16 md:h-16" />
           </Link>
 
           {/* Discord */}
-          <Link href="#" className="text-white hover:text-[#5865F2] transition-colors duration-300">
-            <FontAwesomeIcon icon={faDiscord} className="w-7 h-7" />
+          <Link href="https://discord.gg/zVNuXzZ9" className="text-white hover:text-[#5865F2] transition-colors duration-300">
+            <FontAwesomeIcon icon={faDiscord} className="w-12 h-12 md:w-16 md:h-16" />
           </Link>
 
         </div>

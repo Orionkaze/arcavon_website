@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Gamepad2, Code, Users, Target, Rocket } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("mission");
@@ -35,10 +36,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20">
         <div className="space-y-8 mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight uppercase">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight uppercase font-[family-name:var(--font-hanuman)]">
             About Arcavon
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed uppercase tracking-wider max-w-3xl">
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed uppercase tracking-wider max-w-3xl font-[family-name:var(--font-inter)]">
             Where gaming meets innovation, and community fuels creation
           </p>
         </div>
@@ -46,16 +47,16 @@ export default function AboutPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mb-20">
           {stats.map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="p-6 bg-gradient-to-br from-[#0f0f0f] to-black rounded-xl border border-white/10 hover:border-[#00c2ff]/40 transition-all duration-300 group text-center"
             >
-              
+
               <div className="relative">
-                <div className="text-3xl md:text-4xl font-bold text-[#00c2ff] mb-2 group-hover:scale-110 transition-transform">
+                <div className="text-3xl md:text-4xl font-bold text-[#00c2ff] mb-2 group-hover:scale-110 transition-transform font-[family-name:var(--font-chakra)]">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-400 uppercase tracking-widest">
+                <div className="text-sm text-gray-400 uppercase tracking-widest font-[family-name:var(--font-inter)]">
                   {stat.label}
                 </div>
               </div>
@@ -67,21 +68,19 @@ export default function AboutPage() {
         <div className="flex flex-col sm:flex-row gap-4 mb-12 max-w-2xl">
           <button
             onClick={() => setActiveTab("mission")}
-            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 uppercase tracking-wider ${
-              activeTab === "mission"
+            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 uppercase tracking-wider font-[family-name:var(--font-bunken)] ${activeTab === "mission"
                 ? "bg-[#00c2ff] text-black"
                 : "bg-gradient-to-br from-[#0f0f0f] to-black text-gray-400 hover:text-white border border-white/10 hover:border-[#00c2ff]/40"
-            }`}
+              }`}
           >
             Our Mission
           </button>
           <button
             onClick={() => setActiveTab("vision")}
-            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 uppercase tracking-wider ${
-              activeTab === "vision"
+            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 uppercase tracking-wider font-[family-name:var(--font-bunken)] ${activeTab === "vision"
                 ? "bg-[#00c2ff] text-black"
                 : "bg-gradient-to-br from-[#0f0f0f] to-black text-gray-400 hover:text-white border border-white/10 hover:border-[#00c2ff]/40"
-            }`}
+              }`}
           >
             Our Vision
           </button>
@@ -96,11 +95,11 @@ export default function AboutPage() {
                   <Target className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl text-white font-semibold mb-6 uppercase tracking-wide">What We Do</h2>
-                  <p className="text-gray-400 leading-relaxed text-lg mb-4 uppercase tracking-wider">
+                  <h2 className="text-2xl text-white font-semibold mb-6 uppercase tracking-wide font-[family-name:var(--font-hanuman)]">What We Do</h2>
+                  <p className="text-gray-400 leading-relaxed text-lg mb-4 uppercase tracking-wider font-[family-name:var(--font-inter)]">
                     Arcavon is a game-tech company focused on crafting immersive, story-driven games while building the technology and platforms that power the next generation of interactive experiences.
                   </p>
-                  <p className="text-gray-400 leading-relaxed text-lg uppercase tracking-wider">
+                  <p className="text-gray-400 leading-relaxed text-lg uppercase tracking-wider font-[family-name:var(--font-inter)]">
                     From sci-fi worlds and AI-driven systems to robust backend and community tools, Arcavon sits at the intersection of gaming and technology.
                   </p>
                 </div>
@@ -115,11 +114,11 @@ export default function AboutPage() {
                   <Rocket className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl text-white font-semibold mb-6 uppercase tracking-wide">Where We're Going</h2>
-                  <p className="text-gray-400 leading-relaxed text-lg mb-4 uppercase tracking-wider">
+                  <h2 className="text-2xl text-white font-semibold mb-6 uppercase tracking-wide font-[family-name:var(--font-hanuman)]">Where We're Going</h2>
+                  <p className="text-gray-400 leading-relaxed text-lg mb-4 uppercase tracking-wider font-[family-name:var(--font-inter)]">
                     Beyond making games, Arcavon is building a dedicated community for game and game-dev enthusiasts—students, aspiring developers, designers, and artists—to learn, collaborate, and showcase their work.
                   </p>
-                  <p className="text-gray-400 leading-relaxed text-lg uppercase tracking-wider">
+                  <p className="text-gray-400 leading-relaxed text-lg uppercase tracking-wider font-[family-name:var(--font-inter)]">
                     Through events, game jams, resources, and a growing platform, Arcavon aims to give the Indian gaming ecosystem the push it needs to compete on a global stage.
                   </p>
                 </div>
@@ -132,21 +131,21 @@ export default function AboutPage() {
       {/* Core Values */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 uppercase tracking-wider">What Drives Us</h2>
-          <p className="text-lg text-gray-400 uppercase tracking-wider">The pillars that define our approach</p>
+          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 uppercase tracking-wider font-[family-name:var(--font-hanuman)]">What Drives Us</h2>
+          <p className="text-lg text-gray-400 uppercase tracking-wider font-[family-name:var(--font-inter)]">The pillars that define our approach</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((value, index) => (
-            <div 
+            <div
               key={index}
               className="bg-gradient-to-br from-[#0f0f0f] to-black p-8 rounded-xl border border-white/10 hover:border-[#00c2ff]/40 transition-all duration-300 group"
             >
               <div className="w-16 h-16 bg-[#00c2ff]/10 rounded-lg flex items-center justify-center text-[#00c2ff] mb-6 group-hover:bg-[#00c2ff]/20 transition-all group-hover:scale-110">
                 {value.icon}
               </div>
-              <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-wide">{value.title}</h3>
-              <p className="text-gray-400 leading-relaxed uppercase tracking-wider">{value.description}</p>
+              <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-wide font-[family-name:var(--font-hanuman)]">{value.title}</h3>
+              <p className="text-gray-400 leading-relaxed uppercase tracking-wider font-[family-name:var(--font-inter)]">{value.description}</p>
             </div>
           ))}
         </div>
@@ -158,9 +157,11 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#00c2ff]/20 to-purple-500/20 blur-3xl rounded-full"></div>
             <div className="relative w-40 md:w-48 lg:w-56 mx-auto">
-              <img 
-                src="/arcavon_logo.png" 
-                alt="Arcavon Logo" 
+              <Image
+                src="/arcavon_logo.png"
+                alt="Arcavon Logo"
+                width={224}
+                height={224}
                 className="w-full h-auto"
               />
             </div>
