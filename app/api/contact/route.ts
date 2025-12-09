@@ -68,40 +68,8 @@ export async function POST(req: NextRequest) {
       replyTo: email,
       subject: `New Contact Form Message from ${name}`,
       html: `
-<div style="font-family: 'Segoe UI', Arial, sans-serif; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            background: #0d1117; 
-            padding: 25px; 
-            border-radius: 12px;
-            color: #e6edf3;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d1117; padding: 25px; border-radius: 12px; color: #e6edf3;"> <h2 style="color: #00c2ff; margin-bottom: 10px; font-weight: 600;"> New Contact Form Submission </h2> <div style="height: 1px; background: #30363d; margin: 15px 0;"></div> <p style="font-size: 15px;"><strong style="color:#58a6ff;">Name:</strong> ${name}</p> <p style="font-size: 15px;"><strong style="color:#58a6ff;">Email:</strong> <a href="mailto:${email}" style="color:#00c2ff;">${email}</a> </p> <p style="margin-top: 20px; font-size: 15px;"><strong style="color:#58a6ff;">Message:</strong></p> <div style="background: #161b22; padding: 15px; border-radius: 8px; white-space: pre-wrap; color: #e6edf3;"> ${message} </div> <div style="height: 1px; background: #30363d; margin: 25px 0;"></div> <p style="color: #8b949e; font-size: 12px; text-align:center;"> Sent via the Arcavon Website Contact Form. </p> </div>
 
-  <h2 style="color: #00c2ff; margin-bottom: 10px; font-weight: 600;">
-    New Contact Form Submission
-  </h2>
-
-  <div style="height: 1px; background: #30363d; margin: 15px 0;"></div>
-
-  <p style="font-size: 15px;"><strong style="color:#58a6ff;">Name:</strong> ${name}</p>
-  <p style="font-size: 15px;"><strong style="color:#58a6ff;">Email:</strong> 
-    <a href="mailto:${email}" style="color:#00c2ff;">${email}</a>
-  </p>
-
-  <p style="margin-top: 20px; font-size: 15px;"><strong style="color:#58a6ff;">Message:</strong></p>
-  <div style="background: #161b22; 
-              padding: 15px; 
-              border-radius: 8px; 
-              white-space: pre-wrap; 
-              color: #e6edf3;">
-    ${message}
-  </div>
-
-  <div style="height: 1px; background: #30363d; margin: 25px 0;"></div>
-
-  <p style="color: #8b949e; font-size: 12px; text-align:center;">
-    Sent via the Arcavon Website Contact Form.
-  </p>
-</div>
 `,
     };
 

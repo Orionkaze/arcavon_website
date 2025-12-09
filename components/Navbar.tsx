@@ -13,21 +13,9 @@ const michroma = Michroma({
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const checkAdmin = async () => {
-      try {
-        const res = await fetch("/api/auth/login/me");
-        const data = await res.json();
-        setIsAdmin(data.isAdmin);
-      } catch (err) {
-        console.error("Failed to check admin status", err);
-      }
-    };
-    checkAdmin();
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -43,10 +31,6 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
     { name: "Join Community", href: "/#community" },
   ];
-
-  if (isAdmin) {
-    navLinks.push({ name: "Admin", href: "/admin/login" });
-  }
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/95 backdrop-blur-lg shadow-lg shadow-cyan-500/5" : "bg-black/70 backdrop-blur-md"} border-b border-white/10`}>

@@ -25,13 +25,15 @@ export default function Community() {
                 </div>
 
                 {/* Button */}
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 md:px-8 py-3 md:py-4 border border-[#00c2ff]/50 rounded-md text-[#00c2ff] font-bold tracking-[0.2em] hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.3)] transition-all uppercase text-xs sm:text-sm md:text-base font-[family-name:var(--font-bunken)]"
-                >
-                    Get Early Access
-                </motion.button>
+                <a href="https://forms.gle/irYqKujhcDrFxVsW9" target="_blank" rel="noopener noreferrer">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 md:px-8 py-3 md:py-4 border border-[#00c2ff]/50 rounded-md text-[#00c2ff] font-bold tracking-[0.2em] hover:bg-[#00c2ff]/10 hover:border-[#00c2ff] hover:shadow-[0_0_20px_rgba(0,194,255,0.3)] transition-all uppercase text-xs sm:text-sm md:text-base font-[family-name:var(--font-bunken)]"
+                    >
+                        Get Early Access
+                    </motion.button>
+                </a>
             </div>
         </section>
     );
